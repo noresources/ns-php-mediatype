@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3c63a6c92ee38b18ac963c0832dbdce2",
+    "content-hash": "2a097f695df7806d72fa181e36eb788f",
     "packages": [
         {
             "name": "noresources/ns-php-core",
-            "version": "dev-master",
+            "version": "dev-devel",
             "source": {
                 "type": "git",
-                "url": "ssh://okami/volume1/repository/git/ns-php-core.git",
-                "reference": "b484be683e33971cedeb5ccd5e0aed6c8bd2612c"
+                "url": "https://github.com/noresources/ns-php-core.git",
+                "reference": "183aef7fc8e48d0714732b44a90918a4634620eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/noresources/ns-php-core/zipball/183aef7fc8e48d0714732b44a90918a4634620eb",
+                "reference": "183aef7fc8e48d0714732b44a90918a4634620eb",
+                "shasum": ""
             },
             "require": {
                 "ext-json": "*",
@@ -34,7 +40,8 @@
                     "dev-2.0.x": "2.0.x-dev",
                     "dev-2.1.x": "2.1.x-dev",
                     "dev-2.2.x": "2.2.x-dev",
-                    "dev-master": "2.3.x-dev"
+                    "dev-master": "2.3.x-dev",
+                    "dev-devel": "2.4.x-dev"
                 }
             },
             "autoload": {
@@ -43,11 +50,7 @@
                     "NoreSources\\Test\\": "tests/src/"
                 }
             },
-            "scripts": {
-                "tests": [
-                    "@php  ./vendor/bin/phpunit --color=never --bootstrap vendor/autoload.php tests"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -60,23 +63,30 @@
             ],
             "description": "Utility class library for PHP",
             "keywords": [
-                "Utility"
+                "utility"
             ],
             "support": {
-                "issues": "https://github.com/noresources/ns-php-core/issues"
+                "issues": "https://github.com/noresources/ns-php-core/issues",
+                "source": "https://github.com/noresources/ns-php-core/tree/devel"
             },
-            "time": "2021-05-15T18:40:35+00:00"
+            "time": "2021-07-06T18:03:04+00:00"
         },
         {
             "name": "noresources/ns-php-http-core",
-            "version": "dev-master",
+            "version": "dev-devel",
             "source": {
                 "type": "git",
-                "url": "ssh://okami/volume1/repository/git/ns-php-http-core.git",
-                "reference": "9af2e39b909a696eb103ebe1dca80c6f605064d2"
+                "url": "https://github.com/noresources/ns-php-http-core.git",
+                "reference": "f8fe07522472ebb8026e828f4c8b22b3884ea6d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/noresources/ns-php-http-core/zipball/f8fe07522472ebb8026e828f4c8b22b3884ea6d7",
+                "reference": "f8fe07522472ebb8026e828f4c8b22b3884ea6d7",
+                "shasum": ""
             },
             "require": {
-                "noresources/ns-php-core": "~2.3.0",
+                "noresources/ns-php-core": "~2.4.0",
                 "php": ">=5.6"
             },
             "require-dev": {
@@ -86,7 +96,8 @@
             "extra": {
                 "branch-alias": {
                     "dev-1.0.x": "1.0.x-dev",
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "1.1.x-dev",
+                    "dev-devel": "1.2.x-dev"
                 }
             },
             "autoload": {
@@ -94,11 +105,7 @@
                     "NoreSources\\Http\\": "src/"
                 }
             },
-            "scripts": {
-                "tests": [
-                    "@php  ./vendor/bin/phpunit --color=never --bootstrap vendor/autoload.php tests"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -115,7 +122,11 @@
                 "RFC 7231",
                 "http"
             ],
-            "time": "2021-06-06T15:05:24+00:00"
+            "support": {
+                "issues": "https://github.com/noresources/ns-php-http-core/issues",
+                "source": "https://github.com/noresources/ns-php-http-core/tree/devel"
+            },
+            "time": "2021-07-06T18:29:19+00:00"
         },
         {
             "name": "psr/container",
