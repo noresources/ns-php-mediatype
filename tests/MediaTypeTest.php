@@ -17,7 +17,7 @@ use NoreSources\MediaType\MediaTypeFactory;
 use NoreSources\MediaType\MediaTypeInterface;
 use NoreSources\MediaType\MediaTypeRegistry;
 
-final class MediaTypeTest extends \PHPUnit\Framework\TestCase
+class MediaTypeTest extends \PHPUnit\Framework\TestCase
 {
 
 	public function testParse()
@@ -495,6 +495,24 @@ final class MediaTypeTest extends \PHPUnit\Framework\TestCase
 					($registered ? 'not ' : '') . 'registered');
 			}
 		}
+	}
+
+	public function testClone()
+	{
+		$a = MediaType::fromString('text/plain');
+		$sa = $a->serialize();
+
+		$b = clone $a;
+		$this->assertEquals($sa, $b->serialize(), 'Clone');
+
+		$b->getParameters()->offsetSet('charset', 'utf-8');
+		$sb = $b->serialize();
+
+		$this->assertEquals($sa, $a->serialize(),
+			'Clone modification does not affect original parameter map');
+		$a->getParameters()->offsetSet('foo', 'bar');
+		$this->assertEquals($sb, $b->serialize(),
+			'Source modification does not affect clone parameter map');
 	}
 }
 
