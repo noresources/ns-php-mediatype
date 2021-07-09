@@ -32,13 +32,17 @@ class MediaTypeFactory
 	{
 		try
 		{
-			return MediaType::fromString($mediaTypeString);
+			$mediaType = new MediaType('');
+			$mediaType->unserialize($mediaTypeString);
+			return $mediaType;
 		}
 		catch (MediaTypeException $e)
 		{
 			if (!$acceptRange)
 				throw $e;
-			return MediaRange::fromString($mediaTypeString);
+			$mediaRange = new MediaRange(MediaRange::ANY);
+			$mediaRange->unserialize($mediaTypeString);
+			return $mediaRange;
 		}
 	}
 

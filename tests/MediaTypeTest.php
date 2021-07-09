@@ -121,6 +121,22 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 					'syntax' => 'json'
 				],
 				'syntax' => 'json'
+			],
+			'text/html; charset=utf-8' => [
+				'valid' => true,
+				'class' => MediaType::class,
+				'string' => 'text/html',
+				'type' => 'text',
+				'subtype' => [
+					'text' => 'html',
+					'facets' => [
+						'html'
+					]
+				],
+				'parameters' => [
+					'charset' => 'utf-8'
+				],
+				'syntax' => 'html'
 			]
 		];
 
@@ -143,6 +159,14 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 			$this->assertEquals($parsed['type'], $mediaType->getType(),
 				$text . ' name');
 
+			$this->assertEquals(
+				Container::keyValue($parsed, 'string', $text),
+				\strval($mediaType), $text . ' to string');
+
+			$this->assertEquals(
+				Container::keyValue($parsed, 'serialized', $text),
+				$mediaType->serialize(), $text . ' (re-)serialized');
+
 			if ($parsed['subtype'])
 			{
 				$this->assertInstanceOf(MediaSubType::class,
@@ -153,7 +177,8 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				$this->assertCount(count($parsed['subtype']['facets']),
 					$subType->getFacets(), $text . ' subtype facets');
 
-				$this->assertEquals($parsed['subtype']['syntax'],
+				$this->assertEquals(
+					Container::keyValue($parsed['subtype'], 'syntax'),
 					$subType->getStructuredSyntax(),
 					$text . ' subtype syntax');
 
@@ -168,11 +193,8 @@ class MediaTypeTest extends \PHPUnit\Framework\TestCase
 				$this->assertEquals(MediaRange::ANY,
 					$mediaType->getSubType(), 'Subtype is a range');
 
-			$this->assertEquals($parsed['syntax'],
+			$this->assertEquals(Container::keyValue($parsed, 'syntax'),
 				$mediaType->getStructuredSyntax(), $text . ' syntax');
-
-			$this->assertEquals($text, strval($mediaType),
-				$text . ' to string');
 		}
 	}
 
